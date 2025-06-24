@@ -4,6 +4,9 @@
   become: yes # The STIG role requires elevated privileges
 
   tasks:
+    - name: Ensure the RHEL 9 STIG role is installed
+      ansible.builtin.include_role:
+        name: ansible-role-rhel9-stig
 
     - name: Apply the CAT I fixes for the RHEL 9 STIG
       ansible.builtin.include_role:
