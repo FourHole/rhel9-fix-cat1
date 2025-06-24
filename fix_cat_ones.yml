@@ -8,3 +8,4 @@
     # using 'ansible-galaxy install -r requirements.yml'.
     # Ensure you run that command before executing this playbook.
     - role: ansible-role-rhel9-stig
+      tags: high_severity # Apply only high severity rules
