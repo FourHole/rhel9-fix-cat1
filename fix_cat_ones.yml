@@ -10,6 +10,8 @@
     - role: ansible-role-rhel9-stig
       vars:
         - high_severity: true # Apply high severity rules
+      tags:
+        - high_severity # Tag for high severity rules
     
   post_tasks:
     - name: Reboot the system if required
