@@ -14,4 +14,6 @@
         msg: "Rebooting to apply RHEL 9 STIG changes"
         connect_timeout: 5
         reboot_timeout: 600
+      tags:
+        - always
         
