@@ -3,10 +3,17 @@
   hosts: "{{ run_against }}" # Replace with your target host group or server IP/hostname
   become: yes # The STIG role requires elevated privileges
 
-  roles:
-    # This role is expected to be installed via a requirements.yml file
-    # using 'ansible-galaxy install -r requirements.yml'.
-    # Ensure you run that command before executing this playbook.
-    - role: ansible-role-rhel9-stig
-      tags: 
-        - high_severity # Apply only high severity rules
+  tasks:
+
+    - name: Apply the CAT I fixes for the RHEL 9 STIG
+      ansible.builtin.include_role:
+        name: ansible-role-rhel9-stig
+      vars:
+        high_severity: true # Ensure CAT I fixes are applied
+
+    - name: Reboot the system if required
+      ansible.builtin.reboot:
+        msg: "Rebooting to apply RHEL 9 STIG changes"
+        connect_timeout: 5
+        reboot_timeout: 600
+      when: ansible_facts['reboot_required'] | bool
