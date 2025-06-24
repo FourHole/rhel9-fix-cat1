@@ -1,10 +1,10 @@
 ---
 - name: Apply RHEL 9 STIG to target hosts
-  hosts: "{{ run_against }}"  # Replace with your target host group or server IP/hostname
-  become: yes  # The STIG role requires elevated privileges
+  hosts: "{{ run_against }}" # Replace with your target host group or server IP/hostname
+  become: yes # The STIG role requires elevated privileges
 
-  tasks:
-    - name: Apply only high severity STIG controls
-      import_role:
-        name: ansible-role-rhel9-stig
-      tags: high_severity
+  roles:
+    # This role is expected to be installed via a requirements.yml file
+    # using 'ansible-galaxy install -r requirements.yml'.
+    # Ensure you run that command before executing this playbook.
+    - role: ansible-role-rhel9-stig
