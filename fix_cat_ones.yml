@@ -7,8 +7,6 @@
     - name: Fix RHEL 9 CAT I findings
       ansible.builtin.import_role:
         name: ansible-role-rhel9-stig
-      tags:
-        - high_severity
   post_tasks:
     - name: Reboot the system if required
       ansible.builtin.reboot:
